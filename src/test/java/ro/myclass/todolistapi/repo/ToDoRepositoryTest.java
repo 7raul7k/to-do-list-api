@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ToDoRepositoryTest {
 
     @Autowired
-    ToDoRepository toDoListRepository;
+    ToDoListRepository toDoListRepository;
 
     @BeforeEach
     public void clean() {
