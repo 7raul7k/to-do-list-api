@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ToDoRepository extends JpaRepository<ToDoList,Long> {
+public interface ToDoListRepository extends JpaRepository<ToDoList,Long> {
 
 
     @Query("select t from ToDoList t where t.name = ?1")
