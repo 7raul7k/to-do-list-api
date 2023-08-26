@@ -135,6 +135,12 @@ class ToDoRepositoryTest {
         assertEquals(toDoList,toDoListRepository.getToDoListByDescription("Popescu").get());
     }
 
+    @Test
+    public void getToDoListByDescriptionError(){
+        ToDoList toDoList = ToDoList.builder().name("Andrei").description("Popescu").status("Iasi").priority("test").deadline("test").build();
+        toDoListRepository.save(toDoList);
+        assertFalse(toDoListRepository.getToDoListByDescription("Popescu1").isPresent());
+    }
 
 
 }
