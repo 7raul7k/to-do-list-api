@@ -67,14 +67,12 @@ public class ToDoListService {
     }
 
     public void updateToDoList(ToDoListDTO toDoListDTO){
-        Optional<ToDoList> toDoList = this.toDoListRepository.getToDoListById(toDoListDTO.getId());
+        Optional<ToDoList> toDoList = this.toDoListRepository.getToDoListByName(toDoListDTO.getName());
         if (toDoList.isEmpty()){
-            throw new ToDoListWasFoundException();
-        }else{
+            throw new ToDoListNotFoundException();
+        }
 
-            if(toDoListDTO.getName() != null){
-                toDoList.get().setName(toDoListDTO.getName());
-            }if(toDoListDTO.getDescription() != null) {
+            if(toDoListDTO.getDescription() != null) {
                 toDoList.get().setDescription(toDoListDTO.getDescription());
             }if(toDoListDTO.getStatus() != null) {
                 toDoList.get().setStatus(toDoListDTO.getStatus());
@@ -85,7 +83,7 @@ public class ToDoListService {
             }
 
             toDoListRepository.saveAndFlush(toDoList.get());
-        }
+
     }
 
     public ToDoList getToDoListById(long id){
@@ -126,6 +124,15 @@ public class ToDoListService {
 
     public ToDoList getToDoListByDescription(String description){
         Optional<ToDoList> toDoLists = this.toDoListRepository.getToDoListByDescription(description);
+        if (toDoLists.isEmpty()){
+            throw new ToDoListNotFoundException();
+        }else{
+            return toDoLists.get();
+        }
+    }
+
+    public ToDoList getToDoListByName(String name){
+        Optional<ToDoList> toDoLists = this.toDoListRepository.getToDoListByName(name);
         if (toDoLists.isEmpty()){
             throw new ToDoListNotFoundException();
         }else{
