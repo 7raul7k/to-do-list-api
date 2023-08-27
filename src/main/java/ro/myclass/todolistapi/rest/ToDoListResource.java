@@ -36,7 +36,7 @@ public class ToDoListResource {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addNewToDoList(ToDoListDTO toDoList){
+    public ResponseEntity<String> addNewToDoList(@RequestBody  ToDoListDTO toDoList){
 
         this.toDoListService.addNewToDoList(toDoList);
 

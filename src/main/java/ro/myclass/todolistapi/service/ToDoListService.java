@@ -43,11 +43,10 @@ public class ToDoListService {
 
             ToDoList toDoList = ToDoList.builder().name(toDoListDTO.getName())
                             .description(toDoListDTO.getDescription())
-                                    .deadline(toDoListDTO.getDeadline())
-                                            .priority(toDoListDTO.getPriority())
-                                                    .status(toDoListDTO.getStatus())
-                                                            .build();
-
+                            .deadline(toDoListDTO.getDeadline())
+                            .priority(toDoListDTO.getPriority())
+                            .status(toDoListDTO.getStatus())
+                            .build();
 
             toDoListRepository.save(toDoList);
 
