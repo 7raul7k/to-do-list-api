@@ -233,9 +233,9 @@ class ToDoListResourceTest {
 
     @Test
     public void getToDoListByDescriptionBadRequest() throws Exception{
-        doThrow(ToDoListWasFoundException.class).when(toDoListService).getToDoListByDescription("Popescu");
+        doThrow(ToDoListWasFoundException.class).when(toDoListService).getToDoListByDescription("test");
 
-        restMockMvc.perform(get("/api/v1/todo-list/get-by-description/Popescu")).andExpect(status().isBadRequest());
+        restMockMvc.perform(get("/api/v1/todo-list/get-by-description/test")).andExpect(status().isBadRequest());
     }
 
 
